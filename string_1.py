@@ -46,8 +46,22 @@ class String:
 
         return False if is_not_anagram else True
 
+    def is_substring(self, string1, string2):
+        if len(string1) > len(string2):
+            return False
+
+        string2 = list(string2)
+        subs = []
+        for i in range(len(string2)):
+            subs.append("".join(string2[:i]))
+            for j in range(i, len(string2[i:])):
+                subs.append("".join(string2[j:]))
+        print(subs)
+        return string1 in subs
+
 
 st = String("racecar")
 # print("Is Empty String: ", st.is_empty())
 print("Is Palindrome String: ", st.is_palindrome())
 print("Is Anagram Strings: ", st.is_anagram2("fatan", "fanta"))
+print("Is A Substring: ", st.is_substring("acters", "characters"))
